@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Budget Planner</title>
+  <link rel="stylesheet" href="./index.css" />
+  <!-- jsPDF Library -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js "></script>
+</head>
+<body>
+
+  <div class="container">
+    <h1>Budget Planner</h1>
+
+    <div class="budget-categories">
+      <!-- Food Category -->
+      <section class="category" role="group" aria-labelledby="food-heading">
+        <h2 id="food-heading">Food</h2>
+
+        <div class="slider-wrapper" aria-live="polite">
+          <label for="food-slider">Amount ($)</label>
+          <input type="range" id="food-slider" class="custom-range" min="0" max="1000" value="600" step="10" aria-describedby="food-label">
+          <p class="slider-value" id="food-label">Value: $600</p>
+        </div>
+
+        <div class="expense-bar-container" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100">
+          <div class="expense-bar" id="food-bar" style="width: 60%;" aria-hidden="true">60%</div>
+        </div>
+
+        <button class="add-expense-btn" data-category="Food" aria-label="Add expense for Food">Add Expense</button>
+      </section>
+
+      <!-- Rent Category -->
+      <section class="category" role="group" aria-labelledby="rent-heading">
+        <h2 id="rent-heading">Rent</h2>
+
+        <div class="slider-wrapper" aria-live="polite">
+          <label for="rent-slider">Amount ($)</label>
+          <input type="range" id="rent-slider" class="custom-range" min="0" max="1500" value="1200" step="10" aria-describedby="rent-label">
+          <p class="slider-value" id="rent-label">Value: $1200</p>
+        </div>
+
+        <div class="expense-bar-container" role="progressbar" aria-valuenow="80" aria-valuemin="0" aria-valuemax="100">
+          <div class="expense-bar" id="rent-bar" style="width: 80%;" aria-hidden="true">80%</div>
+        </div>
+
+        <button class="add-expense-btn" data-category="Rent" aria-label="Add expense for Rent">Add Expense</button>
+      </section>
+
+      <!-- Entertainment Category -->
+      <section class="category" role="group" aria-labelledby="entertainment-heading">
+        <h2 id="entertainment-heading">Entertainment</h2>
+
+        <div class="slider-wrapper" aria-live="polite">
+          <label for="entertainment-slider">Amount ($)</label>
+          <input type="range" id="entertainment-slider" class="custom-range" min="0" max="500" value="200" step="10" aria-describedby="entertainment-label">
+          <p class="slider-value" id="entertainment-label">Value: $200</p>
+        </div>
+
+        <div class="expense-bar-container" role="progressbar" aria-valuenow="40" aria-valuemin="0" aria-valuemax="100">
+          <div class="expense-bar" id="entertainment-bar" style="width: 40%;" aria-hidden="true">40%</div>
+        </div>
+
+        <button class="add-expense-btn" data-category="Entertainment" aria-label="Add expense for Entertainment">Add Expense</button>
+      </section>
+    </div>
+
+    <!-- Summary Section -->
+    <section class="summary" role="region" aria-labelledby="summary-heading">
+      <h2 id="summary-heading">Budget Summary</h2>
+      <div class="summary-bar-container" role="progressbar" aria-valuenow="65" aria-valuemin="0" aria-valuemax="3000">
+        <div class="summary-bar" id="summary-bar" style="width: 65%;" aria-hidden="true">65%</div>
+      </div>
+      <div class="summary-info" id="summary-text">Total Spent: $2000 / $3000</div>
+    </section>
+
+    <!-- Receipt Button -->
+    <button id="receipt-button" class="add-expense-btn" aria-label="View receipt">View Receipt</button>
+
+    <!-- Receipt Container -->
+    <div id="receipt-list" class="receipt-section" role="region" aria-labelledby="receipt-heading">
+      <h3 id="receipt-heading">🧾 Receipt</h3>
+
+      <table class="receipt-table" id="receipt-table" aria-label="Expenses list">
+        <thead>
+          <tr>
+            <th>#</th>
+            <th>Category</th>
+            <th>Amount</th>
+            <th>Note</th>
+            <th>Date</th>
+            <th>Status</th>
+          </tr>
+        </thead>
+        <tbody id="receipt-body">
+          <!-- Dynamic Rows -->
+        </tbody>
+      </table>
+
+      <div aria-live="polite" style="margin-top: 20px;">
+        <p><strong>Total Food:</strong> <span id="total-food">$0</span></p>
+        <p><strong>Total Rent:</strong> <span id="total-rent">$0</span></p>
+        <p><strong>Total Entertainment:</strong> <span id="total-entertainment">$0</span></p>
+      </div>
+
+      <div class="receipt-actions" role="group" aria-label="Receipt actions">
+        <button id="printReceiptBtn" class="download-btn btn-print" aria-label="Print receipt">🖨️ Print</button>
+        <button id="downloadCSVBtn" class="download-btn btn-csv" aria-label="Download CSV file">📄 Download CSV</button>
+        <button id="downloadPDFBtn" class="download-btn btn-pdf" aria-label="Download PDF file">📑 Download PDF</button>
+      </div>
+    </div>
+
+    <!-- Modal -->
+    <div id="expenseModal" role="dialog" aria-modal="true" aria-labelledby="modal-title">
+      <div class="modal-content">
+        <span id="closeModalBtn" aria-label="Close modal">&times;</span>
+        <h3 id="modal-title">Enter Expense Details</h3>
+        <label for="expenseNote">Expense Note:</label>
+        <input type="text" id="expenseNote" placeholder="Expense note" aria-required="true">
+        <div id="error-message" class="error-message" aria-live="assertive"></div>
+        <button id="saveExpenseBtn">Save</button>
+      </div>
+    </div>
+  </div>
+
+  <script src="./script.js"></script>
+</body>
+</html>

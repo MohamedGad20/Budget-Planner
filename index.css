@@ -1,0 +1,275 @@
+/* --- General Styles --- */
+body {
+  font-family: Arial, sans-serif;
+  background-color: #FFFFFF;
+  color: #4A4E69;
+  line-height: 1.6;
+  padding: 20px;
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+h1 {
+  text-align: center;
+  margin-bottom: 40px;
+  color: #4A4E69;
+  font-size: 32px;
+}
+
+/* --- Budget Categories --- */
+.budget-categories {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 30px;
+  margin-bottom: 40px;
+}
+
+.category {
+  background-color: #f8f9fa;
+  border-radius: 10px;
+  padding: 20px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.category h2 {
+  font-size: 18px;
+  font-weight: bold;
+  margin-bottom: 15px;
+}
+
+/* --- Custom Range Slider --- */
+.slider-wrapper {
+  width: 100%;
+  margin-top: 10px;
+}
+
+.custom-range {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 100%;
+  height: 8px;
+  border-radius: 5px;
+  background: #ddd;
+  outline: none;
+  transition: background-color 0.3s ease;
+}
+
+.custom-range::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  background: #1D3557;
+  cursor: pointer;
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.3);
+  transition: background 0.3s ease;
+}
+
+.custom-range::-moz-range-thumb {
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  background: #1D3557;
+  cursor: pointer;
+}
+
+.custom-range::-webkit-slider-runnable-track {
+  width: 100%;
+  height: 8px;
+  background: #e9ecef;
+  border-radius: 5px;
+  transition: background 0.3s ease;
+}
+
+.slider-value {
+  margin-top: 8px;
+  font-size: 14px;
+  color: #1D3557;
+  font-weight: bold;
+  text-align: right;
+}
+
+/* --- Expense Bars --- */
+.expense-bar-container {
+  width: 100%;
+  height: 30px;
+  background-color: #e9ecef;
+  border-radius: 15px;
+  margin: 15px 0;
+  overflow: hidden;
+  box-shadow: inset 0 1px 3px rgba(0,0,0,0.1);
+  position: relative;
+}
+
+.expense-bar {
+  height: 100%;
+  background: linear-gradient(90deg, #2a4f75, #1D3557);
+  border-radius: 15px;
+  transition: width 0.4s ease-in-out;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  padding-right: 10px;
+  color: white;
+  font-size: 12px;
+  font-weight: bold;
+}
+
+.summary {
+  margin-top: 40px;
+  padding: 30px;
+  background-color: #f8f9fa;
+  border-radius: 10px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.summary-bar-container {
+  width: 100%;
+  height: 30px;
+  background-color: #e9ecef;
+  border-radius: 15px;
+  margin: 15px 0;
+  overflow: hidden;
+  box-shadow: inset 0 1px 3px rgba(0,0,0,0.1);
+  position: relative;
+}
+
+.summary-bar {
+  height: 100%;
+  background: linear-gradient(90deg, #2a4f75, #1D3557);
+  border-radius: 15px;
+  transition: width 0.4s ease-in-out;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  padding-right: 10px;
+  color: white;
+  font-size: 12px;
+  font-weight: bold;
+}
+
+.summary-info {
+  font-size: 14px;
+  margin-top: 10px;
+}
+
+/* --- Add Expense Button --- */
+.add-expense-btn {
+  width: 100%;
+  padding: 10px;
+  background-color: #1D3557;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 14px;
+  transition: background-color 0.3s ease;
+  margin-top: 15px;
+}
+
+.add-expense-btn:hover,
+.add-expense-btn:focus {
+  background-color: #152538;
+}
+
+/* --- Focus Outline --- */
+input[type="range"]:focus,
+button:focus,
+input[type="text"]:focus {
+  outline: none;
+  box-shadow: 0 0 0 3px rgba(29, 53, 87, 0.4);
+}
+
+/* --- Error Message Style --- */
+.error-message {
+  color: red;
+  font-size: 13px;
+  margin-top: 5px;
+}
+
+/* --- Receipt Table --- */
+.receipt-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 15px;
+  font-size: 14px;
+}
+
+.receipt-table th,
+.receipt-table td {
+  text-align: right;
+  padding: 8px;
+  border-bottom: 1px solid #ddd;
+}
+
+.receipt-table th {
+  background-color: #f1f3f5;
+  color: #333;
+}
+
+.over-budget {
+  background-color: #ffe6e6 !important;
+  color: red !important;
+  font-weight: bold;
+}
+
+/* --- Modal --- */
+#expenseModal {
+  display: none;
+  position: fixed;
+  top: 30%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: white;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0,0,0,0.2);
+  z-index: 1000;
+  min-width: 250px;
+}
+
+.modal-content {
+  position: relative;
+}
+
+#closeModalBtn {
+  position: absolute;
+  top: 5px;
+  left: 10px;
+  font-size: 20px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-weight: bold;
+}
+
+#expenseNote {
+  width: 100%;
+  padding: 8px;
+  margin-top: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  font-size: 14px;
+}
+
+#saveExpenseBtn {
+  margin-top: 15px;
+  padding: 8px 15px;
+  background-color: #1D3557;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+/* --- Responsive --- */
+@media screen and (max-width: 768px) {
+  .budget-categories {
+    grid-template-columns: 1fr;
+  }
+}
